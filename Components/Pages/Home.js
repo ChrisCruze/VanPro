@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Dimensions, Animated,Text } from "react-native";
+import { View, StyleSheet, Dimensions, Animated, Text } from "react-native";
 import Constants from "expo-constants";
-
+import { firebase } from "../../firebase";
 import Theme from "../Elements/Theme";
-import { AsyncStorage } from "react-native";
+
 const Home = ({ navigation }) => {
   const [scrollAnimation] = useState(new Animated.Value(0));
-  const [email,updateEmail] = useState("Testing HERE")
-
-
-  AsyncStorage.getItem("email").then(emailText => {
-    updateEmail(emailText)
-    console.log({emailText})
-  });
-
-
+  var user = firebase.auth().currentUser;
   return (
     <View style={styles.container}>
-      <Text>
-        "testing"
-        {email}
-      </Text>
+      <Text>{user.email}</Text>
       <Animated.ScrollView
         onScroll={Animated.event(
           [
@@ -33,7 +22,6 @@ const Home = ({ navigation }) => {
           }
         )}
       ></Animated.ScrollView>
-      
     </View>
   );
 };
