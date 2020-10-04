@@ -74,6 +74,10 @@ const StackNavigatorOptions = {
   headerMode: "none",
   cardStyle: {
     backgroundColor: "white"
+
+
+
+    
   }
 };
 
@@ -116,4 +120,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
-});
+    });

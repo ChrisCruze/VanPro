@@ -13,7 +13,7 @@ const Welcome = ({ navigation }) => {
     <Container gutter={2} style={styles.root}>
       <View style={styles.container}>
         <Text type="header1" style={styles.header}>
-          Evolve
+          VanPro
         </Text>
       </View>
       <View style={styles.container} delay={600} duration={300}>

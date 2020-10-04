@@ -18,6 +18,8 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   if (user != null) {
     console.log("We are authenticated now!");
+    AsyncStorage.setItem("email", user['email']);
+    AsyncStorage.setItem("uid", user['uid']);
   }
   console.log({ user });
 });
