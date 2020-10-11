@@ -14,19 +14,19 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   project_container: {
-    alignItems: "center",
-    justifyContent: "center"
+    // alignItems: "center",
+    justifyContent: 'flex-start'
   },
   logo: {
     width: 200,
     height: 200
   },
   text: {
-    alignItems: "center",
+    // alignItems: "center",
     flexDirection: "row",
-    alignSelf: "center",
-    justifyContent: "center",
-    fontSize: 30,
+    // alignSelf: "center",
+    justifyContent: 'flex-start',
+    fontSize: 10,
     fontWeight: "bold"
   }
 });
