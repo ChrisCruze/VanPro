@@ -1,4 +1,6 @@
 import * as firebase from "firebase";
+import React, { Fragment, useState, useEffect } from "react";
+
 import "firebase/auth";
 import "@firebase/firestore";
 
@@ -49,5 +51,28 @@ export function firebase_sign_out() {
       console.log({ err });
     });
 }
+
+export const firebaseChaptersGet = () => {
+  const [firebaseChapters, updateFirebaseChapters] = useState([]);
+  const chaptersRef = firebase.firestore().collection("chapters");
+
+  useEffect(() => {
+    chaptersRef.onSnapshot(
+      querySnapshot => {
+        const newEntities = [];
+        querySnapshot.forEach(doc => {
+          const entity = doc.data();
+          entity.id = doc.id;
+          newEntities.push(entity);
+        });
+        updateFirebaseChapters(newEntities);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }, []);
+  return firebaseChapters;
+};
 
 export { firebase };

@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Dimensions, Animated, Text } from "react-native";
+import { View, StyleSheet, Dimensions, Animated, Text, FlatList } from "react-native";
 import Constants from "expo-constants";
-import { firebase } from "../../firebase";
+import { firebase, firebaseChaptersGet } from "../../firebase";
 import Theme from "../Elements/Theme";
+
+import Header from "../Layouts/Header";
+import Chapters from "../Layouts/Chapters";
 
 const Home = ({ navigation }) => {
   const [scrollAnimation] = useState(new Animated.Value(0));
-  var user = firebase.auth().currentUser;
+
+  const chapters = firebaseChaptersGet();
   return (
     <View style={styles.container}>
-      <Text>{user.email}</Text>
-      <Animated.ScrollView
-        onScroll={Animated.event(
-          [
-            {
-              nativeEvent: { contentOffset: { y: scrollAnimation } }
-            }
-          ],
-          {
-            useNativeDriver: true
-          }
-        )}
-      ></Animated.ScrollView>
+      <Header name={"Chapters"} />
+      <Chapters firebaseChapters={chapters} />
     </View>
   );
 };
